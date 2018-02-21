@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>desafios</title>
+    <style>
+        body {
+            background: #000;
+            font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+            height: 100%;
+        }
+
+        .wrapper {
+            width: 800px;
+            margin: 30px auto;
+            color: #fff;
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 2.6em;
+            text-transform: uppercase;
+        }
+
+        input {
+            font-size: 2em;
+            width: 22%;
+            color: #fff;
+            background-color: #000;
+            text-align: center;
+        }
+
+        button {
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+            -khtml-border-radius: 5px;
+            background: #000;
+            color: #fff;
+            border: solid 1px #fff;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 18px 10px;
+            width: 180px;
+            margin: 10px;
+            outline: none;
+        }
+
+        button:hover {
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+            background: #fff;
+            border: solid 1px #fff;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Desafio 21</h1>
+        <h2>Projeto: Cronômetro!</h2>
+        <p>
+            <input type="text" value="0" data-js="timer">
+
+        </p>
+        <button data-js="start">Start</button>
+        <button data-js="stop">Stop</button>
+        <button data-js="reset">Reset</button>
+    </div>
+
+    <script src="desafio_21.js"></script>
+</body>
+
+</html>

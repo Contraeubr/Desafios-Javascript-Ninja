@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>desafios</title>
+
+</head>
+
+<body>
+    <style>
+        *,
+        *:before,
+        *:after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            background-color: #333;
+        }
+
+        .calculator {
+            width: 280px;
+            background-color: #F3F6F7;
+            -webkit-box-shadow: 5px 5px 120px rgba(0, 0, 0, 0.2);
+            box-shadow: 5px 5px 120px rgba(0, 0, 0, 0.2);
+            margin: calc(50vh - 200px) auto;
+            position: relative;
+        }
+
+        .calculator:after {
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 100%;
+            right: 0;
+            top: 0;
+        }
+
+        .clearbutton {
+            position: absolute;
+            font-family: "Droid Sans Mono";
+            top: 0;
+            right: 0;
+            width: 70px;
+            height: 70px;
+            opacity: 0.5;
+            cursor: pointer;
+            outline: none;
+            font-size: 20px;
+            text-align: center;
+            line-height: 70px;
+        }
+
+        .clearbutton:active {
+            line-height: 74px;
+            opacity: 1 !important;
+        }
+
+        .clearbutton:active:before {
+            position: absolute;
+            display: block;
+            content: '';
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #BDE8FD;
+            z-index: 1000;
+            opacity: 1;
+        }
+
+        .clearbutton:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .input,
+        .result {
+            font-family: "Droid Sans Mono";
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+            border: none;
+            background-color: transparent;
+            width: 100%;
+            line-height: 20px;
+            font-size: 20px;
+            padding: 25px 23.3333333333px;
+            display: inline-block;
+            height: 70px;
+            outline: none;
+            opacity: 0.8;
+            float: left;
+            color: inherit;
+        }
+
+        .input:focus,
+        .result:focus {
+            opacity: 1;
+        }
+
+        .input.input,
+        .result.input {
+            padding-right: 70px;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .input.result,
+        .result.result {
+            cursor: pointer;
+        }
+
+        .result.error {
+            opacity: 0.2;
+        }
+
+        .screen {
+            background-color: #1F1C1B;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .keys {
+            font-family: "Droid Sans Mono";
+        }
+
+        .keys button {
+            border: none;
+            color: #fff;
+            background-color: #000;
+            width: 25%;
+            float: left;
+            line-height: 70px;
+            position: relative;
+            height: 70px;
+            padding-left: 10.5%;
+            font-size: 20px;
+            outline: none;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .keys button:active {
+            line-height: 74px;
+        }
+
+        .keys button:active:before {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.1);
+            height: 2px;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .keys button.igual {
+            width: 50%;
+        }
+
+        .keys button.num {
+            background-color: #000;
+        }
+
+
+        .keys button:nth-child(13),
+        .keys button:nth-child(14),
+        .keys button:nth-child(15) {
+            height: 73px;
+        }
+
+        .keys button:nth-child(13):after,
+        .keys button:nth-child(14):after,
+        .keys button:nth-child(15):after {
+            content: '';
+            display: block;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .keys button:nth-child(13):active:after,
+        .keys button:nth-child(14):active:after,
+        .keys button:nth-child(15):active:after {
+            height: 1px;
+        }
+
+
+        .keys:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+
+    <div class="calculator">
+        <div class="screen">
+            <input class="input" type="tel" readonly value="0" data-js="visor">
+            <button class="clearbutton" data-js="btnCe" >CE</button>
+        </div>
+        <div class="keys">
+            <!-- Row 1 -->
+            <button class="num" data-js="btnNum" value="7">7</button>
+            <button class="num" data-js="btnNum" value="8">8</button>
+            <button class="num" data-js="btnNum" value="9">9</button>
+            <button class="num" data-js="btnOperacao" value="÷">÷</button>
+
+            <!-- Row 2 -->
+            <button class="num" data-js="btnNum" value="4">4</button>
+            <button class="num" data-js="btnNum" value="5">5</button>
+            <button class="num" data-js="btnNum" value="6">6</button>
+            <button class="num" data-js="btnOperacao"value="x">x</button>
+
+            <!-- Row 3 -->
+            <button class="num" data-js="btnNum" value="1">1</button>
+            <button class="num" data-js="btnNum" value="2">2</button>
+            <button class="num" data-js="btnNum" value="3">3</button>
+            <button class="num" data-js="btnOperacao" value="-">-</button>
+
+            <!-- Row 4 -->
+            <button class="num" data-js="btnNum" value="0">0</button>
+            <button class="num igual" data-js="btnIgual" value="=">=</button>
+            <button class="num" data-js="btnOperacao" value="+">+</button>
+        </div>
+    </div>
+
+    <script src="desafio_23.js"></script>
+
+</body>
+
+</html>
